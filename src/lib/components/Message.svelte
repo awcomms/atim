@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let m: { id: string; value: { m: string } };
 	import { page } from '$app/stores';
-	import { notifications, notify } from '$lib/util/notify';
+	import { notify } from '$lib/util/notify';
 	import { Button } from './daisy';
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
