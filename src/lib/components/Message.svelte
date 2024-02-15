@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let m: { id: string; value: { m: string } };
 	import { page } from '$app/stores';
-	import { notifications } from '$lib/stores';
+	import { notifications, notify } from '$lib/util/notify';
 	import { Button } from './daisy';
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
@@ -22,10 +22,7 @@
 			await axios.put(`/messages?i=${m.id}&a=a`);
 			dispatch('remove');
 		} catch (e) {
-			$notifications = [
-				...$notifications,
-				{ text: 'Error occured while trying to approve entry', timeout: 3600 }
-			];
+			notify('Error occured while trying to approve entry')
 		}
 		approve_loading = false;
 	};
@@ -35,10 +32,7 @@
 			await axios.put(`/messages?i=${m.id}&a=`);
 			dispatch('remove');
 		} catch (e) {
-			$notifications = [
-				...$notifications,
-				{ text: 'Error occured while trying to trash entry', timeout: 3600 }
-			];
+			notify('Error occured while trying to trash entry')
 		}
 		trash_loading = false;
 	};
