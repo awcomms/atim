@@ -18,6 +18,23 @@
 			({ suggestion, show_suggestion, value } = v);
 		}
 	};
+
+	const send = async () => {
+		check_loading = true;
+		try {
+			const res = await axios.get(`/messages/add?t=${value}`);
+			console.info('rd', res.data);
+			if (!res.data) {
+				notify('Your message has been sent for review');
+			} else {
+				suggestion = res.data;
+			}
+		} catch (e) {
+			console.error(e);
+			notify('encountered an error while sending');
+		}
+		check_loading = false;
+	};
 </script>
 
 <div class="space-y-2">
@@ -26,30 +43,15 @@
 		of Madam Atim Bassey Hogan
 	</p>
 	<TextInput
+		on:keydown={({ key }) => {
+			if (key === 'Enter') send();
+		}}
 		bind:value
 		placeholder="You may type in a tribute or message"
 		top_left_label="Tribute or condolence message"
 		name="t"
 	/>
-	<Button
-		on:click={async () => {
-			check_loading = true;
-			try {
-				const res = await axios.get(`/messages/add?t=${value}`);
-				console.info('rd', res.data);
-				if (!res.data) {
-					notify('Your message has been sent for review');
-				} else {
-					suggestion = res.data;
-				}
-			} catch (e) {
-				console.error(e);
-				notify('encountered an error while sending');
-			}
-			check_loading = false;
-		}}
-		icon={check_loading ? Loading : Send}>send</Button
-	>
+	<Button on:click={send} icon={check_loading ? Loading : Send}>send</Button>
 	<Button href="/messages" type="submit">see all messages</Button>
 
 	{#if suggestion}

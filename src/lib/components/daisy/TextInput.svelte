@@ -21,7 +21,7 @@
 			{/if}
 		</div>
 	{/if}
-	<input on:input bind:value type="text" {placeholder} {name} class:input-error={error} class="input input-bordered w-full max-w-xs {classes}" />
+	<input on:keydown on:input bind:value type="text" {placeholder} {name} class:input-error={error} class="input input-bordered w-full max-w-xs {classes}" />
 	{#if bottom_left_label || bottom_right_label}
 		<div class="label">
 			{#if bottom_left_label}

@@ -10,7 +10,7 @@ export const PUT: RequestHandler = async ({ locals, url }) => {
 		if (!locals.in) throw error(401);
 		const id = url.searchParams.get('i') as string;
 		const a = url.searchParams.get('a') as string;
-		console.debug('id i', id);
+		console.debug('id, a', id, a);
 		await client.json.set(id, `$.a`, Number(a));
 		return new Response();
 	} catch (e) {
@@ -27,11 +27,11 @@ export const GET: RequestHandler = async ({ locals, url }) => {
 		index,
 		...(q && { B: Buffer.from(new Float32Array(await embed(q)).buffer) }),
 		page: Number(url.searchParams.get('p') || 0),
-		query: `@a:[${a} ${a}]`,
+		// query: `@a:[${a} ${a}]`,
 		// query: '*',
 		options: { RETURN: ['m', 'a'] }
 	};
-	// if (a === ('1' || '0') && locals.in) options.query = `@a:[${a} ${a}]`;
+	if (a === ('1' || '0') && locals.in) options.query = `@a:[${a} ${a}]`;
 	const res = await search(options);
 	return json({ ...res, pages: Math.round(res.total / items_per_page) });
 };

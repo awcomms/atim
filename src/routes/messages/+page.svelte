@@ -64,6 +64,7 @@
 
 	<div class="space-y-4">
 		{#each documents as m (m.id)}
+			<!-- {JSON.stringify(m)} -->
 			<Message {m} on:remove={() => remove(m.id)} />
 		{/each}
 	</div>
