@@ -4,6 +4,10 @@
 
 	// import { type PageData } from './$types';
 	export let data
+
+	const approve = (id: string) => {
+
+	}
 </script>
 
 <h2>All messages</h2>
@@ -12,7 +16,7 @@
 <div class="space-y-4">
 	{#each data._ as m}
 		<div class="grid grid-cols-2 gap-3">
-			<p class="p-4 shadow-xl bg-rose-300 rounded-lg items-center" >{m.value.m}</p>
+			<p class="p-4 shadow-md bg-rose-300 rounded-lg items-center" >{m.value.m}</p>
 			{#if data.in}
 				<form method="post" action="?/approve"><Button icon={Check} circle name="id" value={m.id} /></form>
 			{/if}

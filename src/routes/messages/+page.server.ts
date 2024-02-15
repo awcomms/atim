@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({locals}) => {
 	// 	LIMIT: { from: 0, size: items_per_page },
 	// 	RETURN: ['m']
 	// })
-    const res = await search({index, page: 0, query: locals.in ? "*" :  "@a:[1 1]", options: {RETURN: ['m']}})
+    const res = await search({index, page: 0, query: locals.in ? "-(@a:[1 1])" :  "@a:[1 1]", options: {RETURN: ['m']}})
     return {
         _: res.documents
     }

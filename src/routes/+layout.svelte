@@ -10,4 +10,6 @@
 	<Toast {...n} />
 {/each} -->
 
-<slot />
+<div class="p-2">
+	<slot />
+</div>
