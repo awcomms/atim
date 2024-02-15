@@ -1,5 +1,7 @@
 <script>
 	import Events from '$lib/components/Events.svelte';
+	import { Button } from '$lib/components/daisy';
+	import { ArrowRight } from '$lib/components/icons';
 </script>
 
 <div class="w-full p-4 space-y-4">
@@ -25,6 +27,7 @@
 				<p class="md:text-3xl text-base">Nee Atim Archibong Umoh Ekpo</p>
 				<p class="text-lg font-semibold">Beloved mother</p>
 				<p class="text-lg text-yellow-700 font-semibold">82 years</p>
+				<Button outline icon_right icon={ArrowRight} href="/messages">Tributes and Messages</Button>
 			</div>
 		</div>
 		<Events

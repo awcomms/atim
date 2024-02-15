@@ -27,29 +27,30 @@ export const search = async ({
 
 	if (count) {
 		options.LIMIT = { from: 0, size: 0 };
-	} else if (page) {
-		// options.LIMIT = { from: page > 1 ? (page - 1) * items_per_page : 0, size: items_per_page };
+	} else if (page !== null || undefined) {
+		console.debug('s page', page)
+		options.LIMIT = { from: page > 1 ? (page - 1) * items_per_page : 0, size: items_per_page };
 	}
 
-	if (filters?.length) {
-		filters.forEach((filter) => {
-			switch (filter.type) {
-				case 'tag':
-					query += ` @${filter.field}:{${filter.values.map(
-						(v, i) => `${v}${i === filter.values.length - 1 ? '' : ' |'}`
-					)}}`;
-					break;
-				case 'num':
-					query += ` @${filter.field}:[${filter.start} ${filter.end}]`;
-					break;
-				case 'bool':
-					query += ` @${filter.field}:{${filter.value.toString()}}`;
-					break;
-				case 'text':
-					query += ` @${filter.field}:(${filter.value})`;
-			}
-		});
-	}
+	// if (filters?.length) {
+	// 	filters.forEach((filter) => {
+	// 		switch (filter.type) {
+	// 			case 'tag':
+	// 				query += ` @${filter.field}:{${filter.values.map(
+	// 					(v, i) => `${v}${i === filter.values.length - 1 ? '' : ' |'}`
+	// 				)}}`;
+	// 				break;
+	// 			case 'num':
+	// 				query += ` @${filter.field}:[${filter.start} ${filter.end}]`;
+	// 				break;
+	// 			case 'bool':
+	// 				query += ` @${filter.field}:{${filter.value.toString()}}`;
+	// 				break;
+	// 			case 'text':
+	// 				query += ` @${filter.field}:(${filter.value})`;
+	// 		}
+	// 	});
+	// }
 
 	if (B) {
 		const hybrid = query && query !== '*';

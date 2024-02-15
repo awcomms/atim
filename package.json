@@ -41,6 +41,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^5.1.0",
 		"autoprefixer": "^10.4.17",
+		"axios": "^1.6.7",
 		"dompurify": "^3.0.8",
 		"node-redis": "^0.1.7",
 		"redis": "^4.6.13"
