@@ -32,7 +32,7 @@
 	const trash = async () => {
 		trash_loading = true;
 		try {
-			await axios.put(`/messages?i=${m.id}&a=t`);
+			await axios.put(`/messages?i=${m.id}&a=`);
 			dispatch('remove');
 		} catch (e) {
 			$notifications = [
