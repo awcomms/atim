@@ -10,11 +10,10 @@ export const PUT: RequestHandler = async ({ locals, url }) => {
 		const id = url.searchParams.get('i') as string;
 		const a = url.searchParams.get('a') as string
 		console.debug('id i', id);
-		await client.json.set(id, `$.${a}`, 1);
-		console.debug('success');
+		await client.json.set(id, `$.a`, a);
 		return new Response();
 	} catch (e) {
-		console.error('server error for approve: ', e);
+		console.error('server error for act: ', e);
 		throw error(500);
 	}
 };
@@ -23,7 +22,7 @@ export const GET: RequestHandler = async ({ locals, url }) => {
 	const res = await search({
 		index,
 		page: Number(url.searchParams.get('p') || 0),
-		query: locals.in ? '-(@a:[1 1])' : '*',
+		query: locals.in ? '-(@a:[1 1])' : '@a:[1 1]',
 		options: { RETURN: ['m', 'a'] }
 	});
 	console.debug('rress', res)

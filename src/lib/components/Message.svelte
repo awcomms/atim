@@ -19,7 +19,7 @@
 	const approve = async () => {
 		approve_loading = true;
 		try {
-			await axios.put(`/messages?i=${m.id}?a=a`);
+			await axios.put(`/messages?i=${m.id}&a=a`);
 			dispatch('remove');
 		} catch (e) {
 			$notifications = [
@@ -32,7 +32,7 @@
 	const trash = async () => {
 		trash_loading = true;
 		try {
-			await axios.put(`/messages?i=${m.id}?a=t`);
+			await axios.put(`/messages?i=${m.id}&a=t`);
 			dispatch('remove');
 		} catch (e) {
 			$notifications = [
