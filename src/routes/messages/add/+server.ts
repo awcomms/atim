@@ -33,7 +33,7 @@ export const GET = async ({ url, fetch }) => {
 export const PUT: RequestHandler = async ({ request }) => {
 	try {
 		const m = await request.text();
-		await client.json.set(await create_id(), '$', { v: await embed(m), m });
+		await client.json.set(await create_id(), '$', { v: await embed(m), m , a: 0});
 		return new Response();
 	} catch (e) {
 		console.error(e);
