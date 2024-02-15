@@ -18,18 +18,16 @@
 		of Madam Atim Bassey Hogan
 	</p>
 	<TextInput
-		on:input={() => (show_suggestion = false)}
 		bind:value
 		placeholder="You may type in a tribute or message"
 		top_left_label="Tribute or condolence message"
 		name="t"
 	/>
-	<Button icon={check_loading ? Loading : Send} type="submit">send</Button>
 	<Button
 		on:click={async () => {
 			check_loading = true;
 			try {
-				const res = await axios.get(`messages/add?t=${value}`);
+				const res = await axios.get(`/messages/add?t=${value}`);
 				console.info('rd', res.data);
 				if (!res.data) {
 					notify('Your message has been sent for review');
@@ -42,9 +40,9 @@
 			}
 			check_loading = false;
 		}}
-		href="/messages"
-		type="submit">see all messages</Button
+		icon={check_loading ? Loading : Send}>send</Button
 	>
+	<Button href="/messages" type="submit">see all messages</Button>
 
 	{#if suggestion}
 		{#if show_suggestion}
@@ -53,13 +51,14 @@
 					The following is an AI generated correction to your post, you are advised to use this
 					instead
 				</p>
-				<p class="p-3 rounded-xl bg-rose-300 shadow-inner"></p>
+				<p class="p-3 rounded-xl bg-rose-300 shadow-inner">{suggestion}</p>
 				<Button
-				icon={send_loading ? Loading : Send}
+					icon={send_loading ? Loading : Send}
 					on:click={async () => {
 						send_loading = true;
 						try {
 							await axios.put('/messages/add', suggestion);
+							show_suggestion = false
 							notify('Your message has been sent for review');
 						} catch (e) {
 							console.error(e);
@@ -68,7 +67,7 @@
 						send_loading = false;
 					}}>accept</Button
 				>
-				<Button on:click={() => (show_suggestion = false)}>ignore suggestion</Button>
+				<Button on:click={() => (show_suggestion = false)}>hide suggestion</Button>
 			</div>
 		{:else}
 			<Button on:click={() => (show_suggestion = true)}>show previous suggestion</Button>{/if}
