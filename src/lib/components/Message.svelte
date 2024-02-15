@@ -6,7 +6,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
 
-	import { Check, Loading, Trash } from './icons';
+	import { Checkmark, Loading, Trash } from './icons';
 
 	const dispatch = createEventDispatcher();
 
@@ -43,7 +43,7 @@
 	{#if $page.data.in}
 		<Button
 			on:click={approve}
-			icon={approve_loading ? Loading : Check}
+			icon={approve_loading ? Loading : Checkmark}
 			circle
 			name="id"
 			value={m.id}

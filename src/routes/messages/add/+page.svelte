@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/daisy';
 	import TextInput from '$lib/components/daisy/TextInput.svelte';
+	import { Send, Loading } from '$lib/components/icons';
 	import { notify } from '$lib/util/notify';
 	import axios from 'axios';
 
@@ -23,7 +24,7 @@
 		top_left_label="Tribute or condolence message"
 		name="t"
 	/>
-	<Button type="submit">send</Button>
+	<Button icon={check_loading ? Loading : Send} type="submit">send</Button>
 	<Button
 		on:click={async () => {
 			check_loading = true;
@@ -54,6 +55,7 @@
 				</p>
 				<p class="p-3 rounded-xl bg-rose-300 shadow-inner"></p>
 				<Button
+				icon={send_loading ? Loading : Send}
 					on:click={async () => {
 						send_loading = true;
 						try {

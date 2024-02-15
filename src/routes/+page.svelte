@@ -40,9 +40,9 @@
 					<div class="flex items-center space-x-1">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
+							width="18"
+							height="18"
+							viewBox="0 0 18 18"
 							fill="none"
 							stroke="currentColor"
 							stroke-width="2"
@@ -59,9 +59,9 @@
 					<div class="flex items-center space-x-1">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
+							width="18"
+							height="18"
+							viewBox="0 0 18 18"
 							fill="none"
 							stroke="currentColor"
 							stroke-width="2"
@@ -77,9 +77,9 @@
 				<div class="flex items-baseline space-x-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
+						width="18"
+						height="18"
+						viewBox="0 0 18 18"
 						fill="none"
 						stroke="currentColor"
 						stroke-width="2"
@@ -105,7 +105,7 @@
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
-				viewBox="0 0 24 24"
+				viewBox="0 0 18 18"
 				stroke-width="1.5"
 				stroke="currentColor"
 				class="w-6 h-6"
@@ -139,7 +139,7 @@ transition-colors duration-150 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 da
   <div class="flex justify-center"><a class="inline-flex items-center space-x-2 text-sm font-medium rounded-lg
 px-3 py-2.5 border border-gray-200 border-gray-200
 transition-colors duration-150 bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800" href="#"><svg
-        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="w-4 h-4 stroke-2">
         <path d="M5 12h14"></path>
