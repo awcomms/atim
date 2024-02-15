@@ -3,27 +3,24 @@
 	import Pagination from '$lib/components/daisy/Pagination.svelte';
 	import { Button, TextInputWithIcon } from '$lib/components/daisy';
 	import PencilSquare from '$lib/components/icons/hero/PencilSquare.svelte';
-	import { Search } from '$lib/components/icons';
+	import { Search, Loading } from '$lib/components/icons';
 	import axios from 'axios';
 
 	// import { type PageData } from './$types';
 	export let data,
+		a = true,
 		query = '',
 		loading = false;
 	let { documents, page, pages } = data;
 
 	const remove = (id: string) => {
-		console.debug('data', data);
-		console.debug('ia');
 		documents = documents.filter((i) => i.id !== id);
-		console.debug('data2', data);
 	};
 
 	const get = async (p: number = page) => {
 		loading = true;
-		let res = await axios.get(`/messages?p=${p}&q=${query}`);
+		let res = await axios.get(`/messages?p=${p}&q=${query}&a=${Number(a)}`);
 		({ page, pages, documents } = res.data);
-		console.debug(page, pages, documents);
 		loading = false;
 	};
 </script>
@@ -38,8 +35,32 @@
 			displayed here
 		</p>
 		<Button icon={PencilSquare} href="/messages/add">send a message</Button>
-		<TextInputWithIcon placeholder="Search" on:click={get} on:keydown={({key}) => {if (key === 'Enter') get()}} icon={Search} bind:value={query} />
+		<TextInputWithIcon
+			placeholder="Search"
+			on:click={get}
+			on:keydown={({ key }) => {
+				if (key === 'Enter') get();
+			}}
+			icon={Search}
+			bind:value={query}
+		/>
 	</div>
+
+	{#if loading}
+		<Loading />
+	{/if}
+
+	{#if data.in}
+		<div class="grid grid-cols-2 items-center">
+			<p>Showing only {a ? 'approved' : 'unapproved'} messages</p>
+			<Button
+				on:click={() => {
+					a = !a;
+					get();
+				}}>View {a ? 'unapproved' : 'approved'} messages</Button
+			>
+		</div>
+	{/if}
 
 	<div class="space-y-4">
 		{#each documents as m (m.id)}

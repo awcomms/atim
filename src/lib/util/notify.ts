@@ -1,14 +1,14 @@
 import { browser } from '$app/environment';
 import { arrayStore } from '$lib/util/store';
 
-interface Toast {
+interface Notification {
     text: string,
     timeout?: number
 }
 
 interface Button {}
 
-export type CustomToast = Toast & {
+export type CustomNotification = Notification & {
 	button?: Button & {
 		text?: string;
 		act: () => void;
@@ -16,9 +16,9 @@ export type CustomToast = Toast & {
 	clear_on_input?: boolean;
 };
 
-export const notify = (message: string | CustomToast) => {
+export const notify = (message: string | CustomNotification) => {
 	if (browser) {
-		const n: CustomToast = typeof message === 'string' ? { text: message, timeout: 3600 } : message;
+		const n: CustomNotification = typeof message === 'string' ? { text: message, timeout: 3600 } : message;
 		// n.caption = new Date().toLocaleString();
 		// if (!n.kind) n.kind = 'success';
 		if (
@@ -35,4 +35,4 @@ export const notify = (message: string | CustomToast) => {
 	}
 };
 
-export const notifications = arrayStore<CustomToast>('notifications', []);
+export const notifications = arrayStore<CustomNotification>('notifications', []);

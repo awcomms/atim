@@ -11,7 +11,7 @@ export const PUT: RequestHandler = async ({ locals, url }) => {
 		const id = url.searchParams.get('i') as string;
 		const a = url.searchParams.get('a') as string;
 		console.debug('id i', id);
-		await client.json.set(id, `$.a`, a);
+		await client.json.set(id, `$.a`, Number(a));
 		return new Response();
 	} catch (e) {
 		console.error('server error for act: ', e);
@@ -21,13 +21,17 @@ export const PUT: RequestHandler = async ({ locals, url }) => {
 
 export const GET: RequestHandler = async ({ locals, url }) => {
 	const q = url.searchParams.get('q');
-	const res = await search({
+	const a = url.searchParams.get('a') as string;
+	console.debug('a', a)
+	const options = {
 		index,
 		...(q && { B: Buffer.from(new Float32Array(await embed(q)).buffer) }),
 		page: Number(url.searchParams.get('p') || 0),
-		query: locals.in ? '-(@a:[1 1])' : '@a:[1 1]',
+		query: `@a:[${a} ${a}]`,
+		// query: '*',
 		options: { RETURN: ['m', 'a'] }
-	});
-	console.debug('rress', res);
+	};
+	// if (a === ('1' || '0') && locals.in) options.query = `@a:[${a} ${a}]`;
+	const res = await search(options);
 	return json({ ...res, pages: Math.round(res.total / items_per_page) });
 };

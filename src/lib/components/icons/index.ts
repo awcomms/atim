@@ -1,2 +1,2 @@
 export * from './hero'
-export * from './custom'
+export * from './tailwind'

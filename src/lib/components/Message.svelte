@@ -6,7 +6,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
 
-	import { Checkmark, Loading, Trash } from './icons';
+	import { Checkmark, Loading, X } from './icons';
 
 	const dispatch = createEventDispatcher();
 
@@ -19,7 +19,7 @@
 	const approve = async () => {
 		approve_loading = true;
 		try {
-			await axios.put(`/messages?i=${m.id}&a=a`);
+			await axios.put(`/messages?i=${m.id}&a=1`);
 			dispatch('remove');
 		} catch (e) {
 			notify('Error occured while trying to approve entry')
@@ -29,7 +29,7 @@
 	const trash = async () => {
 		trash_loading = true;
 		try {
-			await axios.put(`/messages?i=${m.id}&a=`);
+			await axios.put(`/messages?i=${m.id}&a=0`);
 			dispatch('remove');
 		} catch (e) {
 			notify('Error occured while trying to trash entry')
@@ -48,6 +48,6 @@
 			name="id"
 			value={m.id}
 		/>
-		<Button on:click={trash} icon={trash_loading ? Loading : Trash} circle name="id" value={m.id} />
+		<Button on:click={trash} icon={trash_loading ? Loading : X} circle name="id" value={m.id} />
 	{/if}
 </div>

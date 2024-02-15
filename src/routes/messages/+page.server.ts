@@ -2,7 +2,7 @@ import { client } from '$lib/util/redis';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-	const res = await fetch('/messages')
+	const res = await fetch('/messages?a=1')
 	return await res.json()
 
 };
