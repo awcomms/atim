@@ -1,12 +1,14 @@
 <script lang="ts">
 	import Message from '$lib/components/Message.svelte';
 	import Pagination from '$lib/components/daisy/Pagination.svelte';
-	import { Button } from '$lib/components/daisy/index.js';
+	import { Button, TextInputWithIcon } from '$lib/components/daisy';
 	import PencilSquare from '$lib/components/icons/hero/PencilSquare.svelte';
+	import { Search } from '$lib/components/icons';
 	import axios from 'axios';
 
 	// import { type PageData } from './$types';
 	export let data,
+		query = '',
 		loading = false;
 	let { documents, page, pages } = data;
 
@@ -17,11 +19,9 @@
 		console.debug('data2', data);
 	};
 
-	const get = async (p: number) => {
-		console.log('e-p', p);
+	const get = async (p: number = page) => {
 		loading = true;
-		let res = await axios.get(`/messages?p=${p}`);
-		console.debug('eres', res);
+		let res = await axios.get(`/messages?p=${p}&q=${query}`);
 		({ page, pages, documents } = res.data);
 		console.debug(page, pages, documents);
 		loading = false;
@@ -38,6 +38,7 @@
 			displayed here
 		</p>
 		<Button icon={PencilSquare} href="/messages/add">send a message</Button>
+		<TextInputWithIcon placeholder="Search" on:click={get} on:keydown={({key}) => {if (e.key === 'Enter') get()}} icon={Search} bind:value={query} />
 	</div>
 
 	<div class="space-y-4">

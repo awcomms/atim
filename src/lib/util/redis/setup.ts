@@ -13,7 +13,7 @@ export const setup = async () => {
 					type: SchemaFieldTypes.VECTOR,
 					ALGORITHM: VectorAlgorithms.FLAT,
 					TYPE: 'FLOAT32',
-					DIM: 768,
+					DIM: 3072,
 					DISTANCE_METRIC: 'COSINE'
 				},
 				'$.a': {
