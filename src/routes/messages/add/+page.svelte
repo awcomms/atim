@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/daisy';
+	import type { Snapshot } from './$types';
 	import TextInput from '$lib/components/daisy/TextInput.svelte';
 	import { Send, Loading } from '$lib/components/icons';
 	import { notify } from '$lib/util/notify';
@@ -10,6 +11,13 @@
 		check_loading = false,
 		send_loading = false,
 		value = '';
+
+	export const snapshot: Snapshot = {
+		capture: () => ({ suggestion, show_suggestion, value }),
+		restore: (v) => {
+			({ suggestion, show_suggestion, value } = v);
+		}
+	};
 </script>
 
 <div class="space-y-2">
@@ -58,7 +66,7 @@
 						send_loading = true;
 						try {
 							await axios.put('/messages/add', suggestion);
-							show_suggestion = false
+							show_suggestion = false;
 							notify('Your message has been sent for review');
 						} catch (e) {
 							console.error(e);

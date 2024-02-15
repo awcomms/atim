@@ -12,7 +12,7 @@ export const GET = async ({ url, fetch }) => {
 			messages: [
 				{
 					role: 'user',
-					content: `Correct the following for grammatical accuracy, if there is no need for correction respond only with the word "none": """${body}"""`
+					content: `Correct the following for grammar, punctuation, spelling, and proper English, respond only with the word "none" if there is no need for correction: """${body}"""`
 				}
 			],
 			seed: 432,
