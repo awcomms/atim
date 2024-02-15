@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { Button } from '$lib/components/daisy';
 	import TextInput from '$lib/components/daisy/TextInput.svelte';
 	import { notify } from '$lib/util/notify';
 	import axios from 'axios';
 
 	let suggestion = '',
-		show_suggestion = false,
-		loading = false,
+		show_suggestion = true,
+		check_loading = false,
+		send_loading = false,
 		value = '';
 </script>
 
@@ -26,13 +26,20 @@
 	<Button type="submit">send</Button>
 	<Button
 		on:click={async () => {
-			const res = await axios.get(`messages/add?t=${value}`);
-			console.info('rd', res.data);
-			if (!res.data) {
-				notify('Your message has been sent for review');
-			} else {
-				suggestion = res.data;
+			check_loading = true;
+			try {
+				const res = await axios.get(`messages/add?t=${value}`);
+				console.info('rd', res.data);
+				if (!res.data) {
+					notify('Your message has been sent for review');
+				} else {
+					suggestion = res.data;
+				}
+			} catch (e) {
+				console.error(e);
+				notify('encountered an error while sending');
 			}
+			check_loading = false;
 		}}
 		href="/messages"
 		type="submit">see all messages</Button
@@ -48,8 +55,15 @@
 				<p class="p-3 rounded-xl bg-rose-300 shadow-inner"></p>
 				<Button
 					on:click={async () => {
-						await axios.put('/messages/add', suggestion);
-						notify('Your message has been sent for review');
+						send_loading = true;
+						try {
+							await axios.put('/messages/add', suggestion);
+							notify('Your message has been sent for review');
+						} catch (e) {
+							console.error(e);
+							notify('encountered an error while sending');
+						}
+						send_loading = false;
 					}}>accept</Button
 				>
 				<Button on:click={() => (show_suggestion = false)}>ignore suggestion</Button>
