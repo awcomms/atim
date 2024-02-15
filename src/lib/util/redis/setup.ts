@@ -4,7 +4,6 @@ import { SchemaFieldTypes, VectorAlgorithms } from 'redis';
 
 export const setup = async () => {
 	try {
-		await client.ft.dropIndex(message_index)
 		await client.ft.create(
 			message_index,
 			{

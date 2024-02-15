@@ -38,11 +38,11 @@
 			displayed here
 		</p>
 		<Button icon={PencilSquare} href="/messages/add">send a message</Button>
-		<TextInputWithIcon placeholder="Search" on:click={get} on:keydown={({key}) => {if (e.key === 'Enter') get()}} icon={Search} bind:value={query} />
+		<TextInputWithIcon placeholder="Search" on:click={get} on:keydown={({key}) => {if (key === 'Enter') get()}} icon={Search} bind:value={query} />
 	</div>
 
 	<div class="space-y-4">
-		{#each documents as m}
+		{#each documents as m (m.id)}
 			<Message {m} on:remove={() => remove(m.id)} />
 		{/each}
 	</div>
