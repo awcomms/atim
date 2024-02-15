@@ -14,10 +14,10 @@
 	{#if top_left_label || top_right_label}
 		<div class="label">
 			{#if top_left_label}
-				<span class="label-text">What is your name?</span>
+				<span class="label-text">{top_left_label}</span>
 			{/if}
 			{#if top_right_label}
-				<span class="label-text-alt">Top Right label</span>
+				<span class="label-text-alt">{top_right_label}</span>
 			{/if}
 		</div>
 	{/if}
@@ -25,10 +25,10 @@
 	{#if bottom_left_label || bottom_right_label}
 		<div class="label">
 			{#if bottom_left_label}
-				<span class="label-text-alt">Bottom Left label</span>
+				<span class="label-text-alt">{bottom_left_label}</span>
 			{/if}
 			{#if bottom_right_label}
-				<span class="label-text-alt">Bottom Right label</span>
+				<span class="label-text-alt">{bottom_right_label}</span>
 			{/if}
 		</div>
 	{/if}

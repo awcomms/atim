@@ -4,6 +4,7 @@ import { SchemaFieldTypes, VectorAlgorithms } from 'redis';
 
 export const setup = async () => {
 	try {
+		await client.ft.dropIndex(message_index)
 		await client.ft.create(
 			message_index,
 			{
@@ -14,6 +15,10 @@ export const setup = async () => {
 					TYPE: 'FLOAT32',
 					DIM: 768,
 					DISTANCE_METRIC: 'COSINE'
+				},
+				'$.a': {
+					AS: 'a',
+					type: SchemaFieldTypes.NUMERIC
 				},
 				'$.m': {
 					AS: 'm',
