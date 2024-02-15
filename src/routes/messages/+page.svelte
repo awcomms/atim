@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { type PageData } from './$types';
-	export let data: PageData;
+	// import { type PageData } from './$types';
+	export let data
 </script>
 
 {#each data._ as m}
-	<p>$${m}$$</p>
+	<p>$${JSON.stringify(m)}$$</p>
 {/each}

@@ -5,7 +5,7 @@
 	import { notifications } from '$lib/stores';
 </script>
 
-<form
+<form method="post"
 	use:enhance={() => () => {
 		$notifications = [...$notifications, { text: 'Your message has been sent for review' }];
 	}}
