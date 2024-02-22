@@ -13,13 +13,15 @@
 		loading = false;
 	let { documents, page, pages } = data;
 
+	$: console.log(a)
+
 	const remove = (id: string) => {
 		documents = documents.filter((i) => i.id !== id);
 	};
 
 	const get = async (p: number = page) => {
 		loading = true;
-		let res = await axios.get(`/messages?p=${p}&q=${query}&a=${Number(a)}`);
+		let res = await axios.get(`/messages?p=${p}&q=${query}${data.in && a ? '&a=' : ''}`);
 		({ page, pages, documents } = res.data);
 		loading = false;
 	};
@@ -46,27 +48,27 @@
 		/>
 	</div>
 
-	{#if loading}
-		<Loading />
-	{/if}
-
 	{#if data.in}
 		<div class="grid grid-cols-2 items-center">
 			<p>Showing only {a ? 'approved' : 'unapproved'} messages</p>
 			<Button
-				on:click={() => {
+				on:click={async () => {
 					a = !a;
-					get();
+					await get();
 				}}>View {a ? 'unapproved' : 'approved'} messages</Button
 			>
 		</div>
 	{/if}
 
-	<div class="space-y-4">
-		{#each documents as m (m.id)}
-			<!-- {JSON.stringify(m)} -->
-			<Message {m} on:remove={() => remove(m.id)} />
-		{/each}
-	</div>
+	{#if loading}
+		<div class="items-center"><Loading /></div>
+	{:else}
+		<div class="grid grid-cols-2 gap-3 items-center">
+			{#each documents as m (m.id)}
+				{JSON.stringify(m)}
+				<Message {m} on:remove={() => remove(m.id)} />
+			{/each}
+		</div>
+	{/if}
 	<Pagination on:move={({ detail }) => get(detail)} {page} pages={data.pages} />
 </div>

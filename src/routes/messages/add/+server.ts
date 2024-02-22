@@ -20,7 +20,7 @@ export const GET = async ({ url, fetch }) => {
 		});
 		const res_text = (await res).choices[0].message.content;
 		if (!res_text || res_text?.toLowerCase() === 'none') {
-            await fetch('/messages/add', {method: "PUT", body})
+            await fetch('/messages/add', {method: "POST", body})
 			return new Response()
 		}
 		return text(res_text);
@@ -30,7 +30,7 @@ export const GET = async ({ url, fetch }) => {
 	}
 };
 
-export const PUT: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const m = await request.text();
 		await client.json.set(await create_id(), '$', { v: await embed(m), m , a: 0});
