@@ -27,12 +27,12 @@
 				<p class="md:text-3xl text-base">Nee Atim Archibong Umoh Ekpo</p>
 				<p class="text-lg font-semibold">Beloved mother</p>
 				<p class="text-lg text-yellow-700 font-semibold">82 years</p>
-				<Button outline icon_right icon={ArrowRight} href="/messages">Tributes and Messages</Button>
+				<Button outline icon_right icon={ArrowRight} href="/messages">Messages</Button>
 			</div>
 		</div>
 		<Events
 			name="Order of Events"
-			events={[{ name: 'Night of Songs', date: new Date(2024, 2, 8) }, { name: 'Body leaves General Hospital Calabar to Ikot Akwa Efhiom Edem, Akpabuyo', date: new Date(2024, 2, 9) }, { name: 'Lying-in-state from', date: new Date(2024, 2, 8) }]}
+			events={[{ name: 'Night of Songs', date: new Date(2024, 2, 8) }, { name: 'Body leaves General Hospital Calabar to Ikot Akwa Efhiom Edem, Akpabuyo', date: new Date(2024, 2, 9) }, { name: 'Lying-in-state from', date: new Date(2024, 2, 8, 9) }]}
 		/>
 		<div class="md:grid md:grid-cols-2 gap-1">
 			<div class="space-y-4">
