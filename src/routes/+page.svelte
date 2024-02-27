@@ -39,7 +39,7 @@
 					date: new Date(2024, 2, 9),
 					time: true
 				},
-				{ name: 'Lying-in-state from', date: new Date(2024, 2, 8, 9), time: false }
+				{ name: 'Lying-in-state from', date: new Date(2024, 2, 8, 9), time: true }
 			]}
 		/>
 		<div class="md:grid md:grid-cols-2 gap-1">
