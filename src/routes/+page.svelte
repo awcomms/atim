@@ -32,7 +32,15 @@
 		</div>
 		<Events
 			name="Order of Events"
-			events={[{ name: 'Night of Songs', date: new Date(2024, 2, 8) }, { name: 'Body leaves General Hospital Calabar to Ikot Akwa Efhiom Edem, Akpabuyo', date: new Date(2024, 2, 9) }, { name: 'Lying-in-state from', date: new Date(2024, 2, 8, 9) }]}
+			events={[
+				{ name: 'Night of Songs', date: new Date(2024, 2, 8), time: false },
+				{
+					name: 'Body leaves General Hospital Calabar to Ikot Akwa Efhiom Edem, Akpabuyo',
+					date: new Date(2024, 2, 9),
+					time: true
+				},
+				{ name: 'Lying-in-state from', date: new Date(2024, 2, 8, 9), time: false }
+			]}
 		/>
 		<div class="md:grid md:grid-cols-2 gap-1">
 			<div class="space-y-4">
@@ -120,10 +128,15 @@
 				Kindly send all condolences & tributes to your contact before February 26, 2024
 			</span>
 		</div>
-		<div class="flex justify-center"><a class="inline-block w-[10rem] text-center text-sm font-medium leading-9 rounded-lg
-transition-colors duration-150 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700" href="#">
-        Send Condolences
-      </a></div>
+		<div class="flex justify-center">
+			<a
+				class="inline-block w-[10rem] text-center text-sm font-medium leading-9 rounded-lg
+transition-colors duration-150 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+				href="#"
+			>
+				Send Condolences
+			</a>
+		</div>
 	</div>
 	<!-- <div class="flex items-center justify-center space-x-4"><img src="/placeholder.svg" width="100" height="100"
       alt="Photo of the lady" class="rounded-lg object-cover"
@@ -136,15 +149,28 @@ transition-colors duration-150 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 da
       style="aspect-ratio: 100 / 100; object-fit: cover;"><img src="/placeholder.svg" width="100" height="100"
       alt="Photo of the lady" class="rounded-lg object-cover" style="aspect-ratio: 100 / 100; object-fit: cover;">
   </div> -->
-  <div class="flex justify-center"><a class="inline-flex items-center space-x-2 text-sm font-medium rounded-lg
+	<div class="flex justify-center">
+		<a
+			class="inline-flex items-center space-x-2 text-sm font-medium rounded-lg
 px-3 py-2.5 border border-gray-200 border-gray-200
-transition-colors duration-150 bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800" href="#"><svg
-        xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="w-4 h-4 stroke-2">
-        <path d="M5 12h14"></path>
-        <path d="M12 5v14"></path>
-      </svg>
-      More Media
-    </a></div>
+transition-colors duration-150 bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800"
+			href="#"
+			><svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="18"
+				height="18"
+				viewBox="0 0 18 18"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="w-4 h-4 stroke-2"
+			>
+				<path d="M5 12h14"></path>
+				<path d="M12 5v14"></path>
+			</svg>
+			More Media
+		</a>
+	</div>
 </div>
