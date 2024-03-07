@@ -29,7 +29,7 @@
 
 <div class="space-y-2">
 	<div class="items-center space-y-2">
-		<h1 class="font-bold">Tributes and goodwill messages</h1>
+		<h1 class="font-bold">Condolences and Tributes</h1>
 		<p>
 			This page is dedicated to tributes to Madam Atim Bassey Hogan, condolences to her loved ones,
 			and general goodwill messages with respect to the life of Madam Atim. Any member of the

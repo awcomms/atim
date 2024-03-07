@@ -27,7 +27,7 @@
 				<p class="md:text-3xl text-base">Nee Atim Archibong Umoh Ekpo</p>
 				<p class="text-lg font-semibold">Beloved mother</p>
 				<p class="text-lg text-yellow-700 font-semibold">82 years</p>
-				<Button outline icon_right icon={ArrowRight} href="/messages">Messages</Button>
+				<Button outline icon_right icon={ArrowRight} href="/messages">Condolences </Button>
 			</div>
 		</div>
 		<Events
